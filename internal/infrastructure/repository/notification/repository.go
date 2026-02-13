@@ -51,7 +51,7 @@ func toModel(n *entity.Notification) *Notification {
 		UserID:  n.UserID,
 		Content: n.Content,
 		Channel: n.Channel,
-		Status:  Status(n.Status),
+		Status:  string(n.Status),
 	}
 }
 
@@ -61,7 +61,7 @@ func fromModel(m Notification) *entity.Notification {
 		UserID:    m.UserID,
 		Content:   m.Content,
 		Channel:   m.Channel,
-		Status:    string(m.Status),
+		Status:    entity.Status(m.Status),
 		CreatedAt: m.CreatedAt,
 		UpdatedAt: m.UpdatedAt,
 	}

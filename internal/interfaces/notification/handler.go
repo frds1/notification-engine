@@ -33,6 +33,7 @@ func (h *NotificationHandler) HandleSend(c *gin.Context) {
 		Content: input.Content,
 		Channel: input.Channel,
 		UserID:  input.UserID,
+		Status:  entity.Pending,
 	})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
