@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: notification-db
+    restart: always
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  nats:
+    image: nats:alpine
+    container_name: notification-nats
+    command: "-js"
+    restart: always
+    ports:
+      - "${NATS_CLIENT_PORT}:4222"
+      - "${NATS_MONITOR_PORT}:8222"
+    volumes:
+      - nats_data:/data
+
+volumes:
+  postgres_data:
+  nats_data:
