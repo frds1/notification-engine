@@ -15,6 +15,7 @@ type Config struct {
 	DBUsername      string
 	DBPassword      string
 	DBPort          string
+	DBName          string
 	NatsClientPort  int64
 	NatsMonitorPort int64
 }
@@ -30,6 +31,7 @@ func Load() error {
 		DBUsername:      getEnv("DB_USER", "postgres"),
 		DBPassword:      getEnv("DB_PASSWORD", "postgres"),
 		DBPort:          getEnv("DB_PORT", "5432"),
+		DBName:          getEnv("DB_NAME", "notifications"),
 		NatsClientPort:  getEnvAsInt("NATS_CLIENT_PORT", 4222),
 		NatsMonitorPort: getEnvAsInt("NATS_MONITOR_PORT", 8222),
 	}
