@@ -11,8 +11,8 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-// NewGormConnection cria a conexão e configura o pool
-func NewGormConnection(cfg *config.Config) (*gorm.DB, error) {
+// OpenConnection cria a conexão e configura o pool
+func OpenConnection(cfg *config.Config) (*gorm.DB, error) {
 	databaseURL := "postgresql://" + cfg.DBUsername + ":" + cfg.DBPassword + "@" + cfg.DBHost + ":" + cfg.DBPort + "/"
 
 	db, err := gorm.Open(postgres.Open(databaseURL), &gorm.Config{
