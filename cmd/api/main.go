@@ -9,7 +9,7 @@ func main() {
 	var err error
 
 	if err = config.Load(); err != nil {
-		log.Fatal("Erro ao carregar as envs")
+		log.Fatalf("Erro ao carregar as envs: %v", err)
 	}
 
 	log.Println("Hello World!")
